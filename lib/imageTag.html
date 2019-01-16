@@ -1,0 +1,163 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+  <meta name="referrer" content="never">
+
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
+  <link href="./css/style.css" rel="stylesheet">
+  <link href="./css/tag.css" rel="stylesheet">
+  <link rel="shortcut icon" type="image/x-icon" href="./img/favicon.ico">
+  <title>Coin</title>
+</head>
+
+<body>
+  <div style="height: 100%">
+    <div id="tip"></div>
+    <div class="modal fade" id="bigImg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              &times;
+            </button>
+            <div style="background:#fff" class="imgBox" id="bigImgBox">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              &times;
+            </button>
+            <h4 class="modal-title" id="myModalLabel">
+              Setting
+            </h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal" role="form" id="myForm">
+              <div class="form-group">
+                <label for="firstname" class="col-sm-3 control-label">Column</label>
+                <div class="col-sm-9">
+                  <input type="text" name="column" class="form-control" id="column" placeholder="Please enter the number of images per line">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="firstname" class="col-sm-3 control-label">Frame interval(s)</label>
+                <div class="col-sm-9">
+                  <input type="text" name="frame" class="form-control" id="frame" placeholder="Please enter frame interval">
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close
+            </button>
+            <button type="button" class="btn btn-primary" onclick="setting(this)">
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="src" aria-hidden="true">
+      <div class="modal-dialog modal-lg" style="width: 1200px;">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <a class="modal-title" id="modalTitle" target="_blank"></a>
+            <div class="logo"><img src="./img/logo.png" style="width:150px;"></div>
+          </div>
+          <div class="modal-body">
+            <div class="main">
+              <div class="modelLeft">
+                <div id="mp4Loaded"><img src="../lib/img/loading.gif"></div>
+                <div id="player" style="width:848px;height:488px"></div>
+                <div class="progress" id="progress" data-container="body" data-toggle="popover">
+                  <div class="progress-bar" id="progressbar" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                    style="width: 0%;">
+                  </div>
+                </div>
+
+                <div class="my-progress" id="myProgress" style="display: none">
+                </div>
+                <div style="margin-left: 12px;">
+                  <span id="current">0</span>
+                  <span id="duration"></span> (s)
+                </div>
+              </div>
+              <div class="modelRight">
+                <div class="modelTodo">
+                  <button class="delTagBtn btn btn-danger" onclick="delTag(this)">Clear</button>
+                  <button class="btn btn-success" onclick="saveTimeInfo(true)">Save</button>
+                  <button class="btn btn-danger" onclick="delVideo(true)">Delete</button>
+                </div>
+
+                <div class="info">
+                  <h4>Tags</h4>
+                  <div class="radioBox">
+                  </div>
+                </div>
+                <div class="info">
+                  <h4>Labels</h4>
+                  <div class="result">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="box">
+      <div class="boxTop">
+        <div class="logo">
+          <img src="./img/logo.png">
+        </div>
+        <div>
+          <a href="../coin_annotation_tool.html" style="margin-right: 5px;color: #000; text-decoration: none;">
+            <img src="./img/left.png" height="15px;" style="position: relative;top: -1px;" />Back</a>
+          <span class="red-line"></span>
+          <span href="#">Video(check to play)：
+            <b id="urlId" style="cursor: pointer;"></b>
+          </span>
+        </div>
+        <div class="todo">
+          <button class="delTagBtn btn btn-danger" onclick="delTag(this)">Clear</button>
+          <button class="btn btn-info" onclick="openSet(this)">Setting</button>
+          <button class="btn btn-success" onclick="saveInfo(true)">Save</button>
+          <button class="btn btn-danger" onclick="delVideo(true)">Delete</button>
+        </div>
+      </div>
+      <div class="main">
+        <div class="tagLeft">
+          <ul class="row" id="row">
+          </ul>
+        </div>
+        <div class="tagRight">
+          <div class="info">
+            <h4>Tags</h4>
+            <div class="radioBox">
+            </div>
+          </div>
+          <div class="info">
+            <h4>Labels</h4>
+            <div class="result">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="./js/config.js"></script>
+<script src="./js/imageTag.js"></script>
+</html>

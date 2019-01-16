@@ -1,0 +1,152 @@
+html body {
+  height: 100%;
+  font-size: 14px;
+}
+ul,
+li {
+  list-style: none;
+}
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  display: block;
+  background-color: #f5f5f5;
+  margin-left: -400px;
+  width: 400px;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+  -webkit-box-shadow: #ccc 0 0 10px;
+  box-shadow: #ccc 0 0 10px;
+  box-sizing: border-box;
+}
+.sideTitle {
+  background: #fff;
+  padding: 5px;
+}
+.sidebar p {
+  line-height: 14px;
+  width: 300px;
+  overflow: hidden;
+  margin: 0;
+}
+.sideTitle button {
+  font-size: 14px;
+  height: 28px;
+  position: absolute;
+  right: 3px;
+  padding: 4px 10px;
+}
+iframe {
+  border: none;
+}
+.sidebar > .closeMenu > button {
+  position: absolute;
+  left: -10px;
+  top: 0;
+}
+
+.file.form-control {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 172px;
+  padding: 6px 12px;
+  height: 34px;
+}
+
+.container {
+  padding-top: 30px;
+  min-width: 1200px;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-inline {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.import {
+  display: flex;
+  align-items: center;
+}
+
+button {
+  margin-left: 10px;
+}
+
+#myTab {
+  display: none;
+  position: relative;
+}
+
+#export {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  display: none;
+}
+#myTabContent {
+  display: none;
+}
+
+.tab-content > .tab-pane {
+  border: 1px solid #ddd;
+  border-top: 0px;
+  padding: 20px 10px 0 10px;
+}
+
+#tip {
+  position: absolute;
+  padding: 10px 15px;
+  left: 50%;
+  z-index: 10000;
+  top: 80px;
+  /* display: none; */
+  min-width: 200px;
+  text-align: center;
+}
+.table th,
+.table td {
+  text-align: center;
+  vertical-align: middle !important;
+}
+.table > thead > tr > th {
+  border: none;
+}
+
+select {
+  min-width: 100px;
+}
+
+.header {
+  min-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 30px;
+}
+.title {
+  position: absolute;
+  left: 50px;
+  text-align: center;
+}
+.title > img {
+  width: 200px;
+}
+.table tr {
+  cursor: pointer;
+}

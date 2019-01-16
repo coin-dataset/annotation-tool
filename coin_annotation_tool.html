@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+
+  <link href="./lib/css/bootstrap.min.css" rel="stylesheet">
+  <script src="./lib/js/jquery.min.js"></script>
+  <script src="./lib/js/bootstrap.min.js"></script>
+  <link href="./lib/css/style.css" rel="stylesheet">
+  <link rel="shortcut icon" type="image/x-icon" href="./lib/img/favicon.ico">
+  <title>Coin</title>
+</head>
+
+<body>
+  <div class="modal fade" id="imageTag" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            &times;
+          </button>
+          <iframe id="openUrl" width="100%;" height="100%"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar" id="list_left">
+    <div class="sideTitle">
+      <button class="btn btn-danger" onclick="closeVideo()">Close</button>
+      <p>URLID:&nbsp;&nbsp;
+        <span id="currentUrlId"></span>
+      </p>
+      <p>URL:&nbsp;&nbsp;
+        <span id="currentUrl"></span>
+      </p>
+    </div>
+    <iframe src="about:blank" width="400" height="100%"></iframe>
+  </div>
+  <div class="container">
+    <div id="tip"></div>
+    <div class="header">
+      <div class="title">
+        <img src="./lib/img/logo.png">
+      </div>
+      <form class="form-inline">
+        <div class="import">
+          <div class="form-group">
+            <input type='text' name='urlFile' id='urlFile' disabled class='form-control' placeholder="Load video file" />
+            <input type="file" name="urls" class="file form-control" id="urls" size="28" onchange="changeFile(this,'urlFile')" />
+          </div>
+          <span>&nbsp;-&nbsp;</span>
+          <div class="form-group">
+            <input type='text' name='tagFile' id='tagFile' disabled class='form-control' placeholder="Load label file" />
+            <input type="file" name="tags" class="file form-control" id="tags" size="28" onchange="changeFile(this, 'tagFile')" />
+          </div>
+          <span>&nbsp;-&nbsp;</span>
+          <div class="form-group">
+            <input type='text' name='File' id='frameFile' disabled class='form-control' placeholder="Load frame file" />
+            <input type="file" name="frames" class="file form-control" id="tags" size="28" onchange="changeFile(this, 'frameFile')" />
+          </div>
+          <button type="button" onclick="handleImport()" class="btn btn-primary">Load</button>
+        </div>
+      </form>
+    </div>
+    <ul id="myTab" class="nav nav-tabs">
+      <li class="active">
+        <a class="tab" href="#unTag">
+          Unlabeled&nbsp;<span class="badge" id="unTagTotal">0</span>
+        </a>
+      </li>
+      <li>
+        <a class="tab" href="#taged">
+          Labeled&nbsp;<span class="badge" id="tagedTotal">0</span>
+        </a>
+      </li>
+      <li>
+        <a class="tab" href="#checked">
+          Checked&nbsp;<span class="badge" id="checkedTotal">0</span>
+        </a>
+      </li>
+      <li>
+        <a class="tab" href="#delTag">
+          Deleted&nbsp;<span class="badge" id="delTagTotal">0</span>
+        </a>
+      </li>
+      <li id="export">
+        <div>
+          <a role="button" class="btn btn-primary" onclick="handleExport(this)" download="download.csv" href="#">Download</a>
+        </div>
+      </li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane fade in active" id="unTag">
+        <p>No Data</p>
+      </div>
+      <div class="tab-pane fade" id="taged">
+        <p>No Data</p>
+      </div>
+      <div class="tab-pane fade" id="checked">
+        <p>No Data</p>
+      </div>
+      <div class="tab-pane fade" id="delTag">
+        <p>No Data</p>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script src="./lib/js/config.js"></script>
+<script src="./lib/js/index.js"></script>
+</html>
